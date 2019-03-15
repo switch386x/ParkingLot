@@ -19,14 +19,14 @@ public class ParkingSlot {
     private static int idCounter = 0;
     private final int id = ++idCounter;
     private final int capacity;
-    private final List<Vehicle> parkedVehicles = new ArrayList<>();
+    private final List<Vehicle> parkedVehicles = new ArrayList<>(); // blokada wielkosci przy inicjalizacji
 
-    public ParkingSlot(int capacity) {
+    public ParkingSlot(int capacity) {  // lista w konstruktorze - capacity jako parametr miejsca 
         this.capacity = capacity;
     }
 
     public boolean accepts(Vehicle vehicle) {
-        return isSlotFree(() -> (capacity >= parkedVehicles.get(0).getSpacesNeeded() + vehicle.getSpacesNeeded()));
+        return isSlotFree(() -> (capacity >= parkedVehicles.get(0).getSpacesNeeded() + vehicle.getSpacesNeeded()));   //oddelegowanie reuzywalnych kawalkow do innej metody
     }
 
     public void addVehicle(Vehicle vehicle) {

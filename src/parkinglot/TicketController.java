@@ -1,5 +1,7 @@
 package parkinglot;
 
+import java.math.BigDecimal;
+
 /*
  * Copyright (c) 2019. Schenker AG
  * All rights reserved.
@@ -7,7 +9,8 @@ package parkinglot;
 
 public class TicketController {
 
-    public double getTotalCost(long parkingDuration, double costFactor) {
-        return parkingDuration * costFactor;
+    public BigDecimal getTotalCost(BigDecimal costFactor, BigDecimal parkingDuration) {  //BigDecimal   + logika zmiany kosztu w zaleznosci od dlugosci parkowania 
+        return costFactor.multiply(parkingDuration);
     }
+    
 }

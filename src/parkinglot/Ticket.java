@@ -1,5 +1,7 @@
 package parkinglot;
 
+import java.math.BigDecimal;
+
 /*
  * Copyright (c) 2019. Schenker AG
  * All rights reserved.
@@ -7,18 +9,18 @@ package parkinglot;
 
 public class Ticket {
 
-    private final long startTime = System.currentTimeMillis();
+    private final long startTime = System.currentTimeMillis(); // do konsturktora, plus slot  + metoda konczaca parkowanie zaiwerajaca wlasciwosc endtime na podstawie ktorej bedzie to liczone
     private final Vehicle vehicle;
 
-    public Ticket(Vehicle vehicle) {
+    public Ticket(Vehicle vehicle, long startTime) {
         this.vehicle = vehicle;
     }
 
-    public long calculateParkingDuration() {
-        return System.currentTimeMillis() - startTime;
+    public BigDecimal calculateParkingDuration() {
+        return new BigDecimal(System.currentTimeMillis() - startTime);
     }
 
-    public double calculateCost(TicketController ticketController) {
+    public BigDecimal calculateCost(TicketController ticketController) {
         return ticketController.getTotalCost(calculateParkingDuration(), vehicle.getCostFactor());
     }
 
